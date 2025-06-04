@@ -1,0 +1,36 @@
+### create a order
+POST http://localhost:7061/order/save
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "productId": 1002,
+  "totalPrice": 1000
+}
+
+### get by userid
+GET http://localhost:7061/order/1/orders
+
+### get order by orderid
+GET http://localhost:7061/order/1748839539516
+
+
+### access user-service by userid
+GET http://localhost:6061/user/1
+
+
+### create a order through gateway
+POST http://localhost:8888/order/save
+Content-Type: application/json
+
+{
+  "userId": 2,
+  "productId": 1002,
+  "totalPrice": 1000
+}
+
+### get order list by userid through gateway
+GET localhost:8888/order/2/orders
+
+### get user by id through gateway
+GET http://localhost:8888/user/2
