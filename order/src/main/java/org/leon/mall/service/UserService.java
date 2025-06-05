@@ -4,16 +4,15 @@ import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.leon.mall.remote.RemoteUserService;
 import org.leon.mall.user.entity.User;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @Service
 public class UserService {
-    private static final org.slf4j.Logger log = LoggerFactory.getLogger(UserService.class);
-    Logger logger = Logger.getLogger(UserService.class.getName());
+    Logger logger = LoggerFactory.getLogger(UserService.class);
 
     private final RemoteUserService remoteUserService;
 
@@ -21,16 +20,18 @@ public class UserService {
         this.remoteUserService = remoteUserService;
     }
 
-    /**
+    /** 使用 @SentinelResource 注解使一个方法称为 Sentinel 的流控节点
      *  blockHandler 主要针对以下场景
      *      - Sentinel 规则触发的阻塞异常（如流量控制、熔断降级等）
      *      - 参数必须接受 BlockException 类型的参数
-     *
+     * <p>
      *  fallback 主要针对以下场景
      *      - 业务逻辑中的非阻塞异常（如业务异常、运行时异常等）
      *      - 接受 Throwable 类型的参数，代表任意类型的异常
-     *
+     * </p/
+     * <p>
      *  注意：如果同时满足条件，优先执行 blockHandler，在没有 BlockException 发生时才会考虑 fallback
+     * </p>
      */
 
     @SentinelResource(value = "userServer.getByUserId", blockHandler = "handleBlockForGetByUserId", fallback = "getByUserIdFallback")
@@ -53,14 +54,14 @@ public class UserService {
     }
 
     public User getByUserIdFallback(Throwable t) {
-        logger.warning("getByUserIdFallback");
+        logger.warn("getByUserIdFallback");
         User user = new User();
         user.setId(-1);
         return user;
     }
 
     public List<User> getAllUsersByIdsFallback(Throwable t) {
-        logger.warning("getAllUsersByIdsFallback");
+        logger.warn("getAllUsersByIdsFallback");
         return null;
     }
 

@@ -34,7 +34,7 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
-        <!-- Spring Cloud LoadBalancer (默认集成) -->
+        <!-- Spring Cloud LoadBalancer (如果实现了服务发现, loadbalancer 必须集成, 否则不能识别 lb:// 协议) -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>

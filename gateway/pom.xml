@@ -61,10 +61,15 @@
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
 
-       <!-- <dependency>
+       <!--
+       当前版本组合中 spring-cloud-alibaba-sentinel-gateway 版本可能和 spring-boot-actuator 的3.x 版本不兼容, 引入 spring-boot-actuator 后会导致启动失败,
+       后续尝试升级 spring-cloud-alibaba-sentinel-gateway 版本解决这个问题,
+       或者引入一个 2.x 的 spring-boot-actuator 版本来实现监控端点暴露
+       <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-actuator</artifactId>
-        </dependency>-->
+        </dependency>
+        -->
 
     </dependencies>
 </project>

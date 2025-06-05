@@ -49,8 +49,11 @@ public class OrderCtrl {
             return ResponseEntity.badRequest().body("userId is empty");
         }
 
-        /*String url = "http://" + USER_SERVICE_NAME + "/user/" + userId;
-        ResponseEntity<User> userEntity = restTemplate.getForEntity(url, User.class);*/
+        /*
+        String url = "http://" + USER_SERVICE_NAME + "/user/" + userId;
+        ResponseEntity<User> userEntity = restTemplate.getForEntity(url, User.class);
+        */
+
         User user = userService.getByUserId(userId);
         if (user == null) {
             return ResponseEntity.badRequest().body("user is not existed");
