@@ -8,8 +8,8 @@ and using [Nacos](https://github.com/alibaba/nacos) as dynamic service discovery
 You can develop your complex business code from this skeleton project.
 
 ## Usage
-First of first, you should download the [Sentinel](https://github.com/alibaba/Sentinel/releases) and [Nacos](https://github.com/alibaba/nacos/releases). 
-Notice that, before starting the last version Nacos, you should init the DB tables by using the tables scheme file which Nacos provides, and then follow Nacos startup guideline.
+First of first, download the [Sentinel](https://github.com/alibaba/Sentinel/releases) and [Nacos](https://github.com/alibaba/nacos/releases).
+Before starting the latest version of Nacos, you should first initialize the database tables using the schema file provided by Nacos. After that, follow the official Nacos startup guide to proceed.
 
 Secondly, modify Nacos and Sentinel config in every ```application.yaml``` file.
 
